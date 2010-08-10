@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0087)http://media.pragprog.com/titles/rails3/code/depot_r/app/views/info/who_bought.html.erb -->
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY><PRE>
+<h3>People Who Bought <%= @product.title %></h3>
+
+<ul>
+  <% for order in @orders  -%>
+    <li>
+        <%= mail_to order.email, order.name %>
+    </li>
+  <%  end -%>
+</ul>
+</PRE></BODY></HTML>
