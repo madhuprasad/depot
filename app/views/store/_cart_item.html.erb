@@ -8,5 +8,15 @@
   <td><%= cart_item.quantity %>&times;</td>
   <td><%=h cart_item.title %></td>
   <td class="item-price"><%= number_to_currency(cart_item.price) %></td>
+  <td><% form_remote_tag :url => { :action => 'add_to_cart', :id => cart_item.product, :quantity => 1 }	do %>
+	<%= image_submit_tag "/images/add.png", :alt => "Increase quantity", :title => "Increase quantity" %>
+	<% end %>
+  </td>	
+  <td>
+		<% form_remote_tag :url => { :action => 'remove_from_cart', :id => cart_item.product } do %>
+		<%= image_submit_tag "/images/remove.png", :alt => "Decrease quantity", :title => "Decrease quantity" %>
+		<% end %>
+	</td>
+  
 </tr>
 

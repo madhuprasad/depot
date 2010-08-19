@@ -6,11 +6,13 @@
     <h3><%=h product.title %></h3>
     <%= product.description %>
     <div class="price-line">
-    <span class="price"><%= number_to_currency(product.price) %></span>
+    Unit Price : <span class="price"><%= number_to_currency(product.price) %></span>
     <!-- START:form_remote_tag -->
-    <% form_remote_tag :url => { :action => 'add_to_cart', :id => product } do %>
-      <%= submit_tag "Add to Cart" %>
-    <% end %>
+    Quantity :
+	<% form_remote_tag :url => { :action => 'add_to_cart', :id => product }	do %>
+	<%= text_field_tag 'quantity', '1', :size => 2, :maxlength => 2	%>
+	  <%= submit_tag "Add to Cart" %>
+	<% end %>
     <!-- END:form_remote_tag -->
     </div>
   </div>
