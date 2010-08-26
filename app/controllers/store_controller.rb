@@ -56,6 +56,15 @@ class StoreController < ApplicationController
     @order = Order.new(params[:order])
     @order.add_line_items_from_cart(@cart)
     if @order.save
+      # -- email part
+      email = 'kokirala@navionicsindia.com'
+      recipient = @order.name
+      mail = @order.email
+      subject ='Thank you'
+      message = 'Your order will be delivered soon'
+      Emailer.deliver_contact(recipient, mail, subject, message)
+      return if request.xhr?
+      # -- end of email part
       session[:cart] = nil
       redirect_to_index("Thank you for your order")
     else
@@ -69,6 +78,9 @@ class StoreController < ApplicationController
     redirect_to_index
   end
   
+  def sendmail
+    
+  end
 
 private
 

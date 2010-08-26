@@ -65,3 +65,14 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
+
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  :address => "smtp.sendgrid.net",
+  :port => '25',
+  :domain => "www.sendgrid.net",
+  :authentication => :plain,
+  :user_name => "kokirala@navionicsindia.com",
+  :password => "kokirala"
+}
+ActionMailer::Base.default_content_type = "text/html"
